@@ -229,40 +229,101 @@
             color: #333;
         }
 
-        .progress-container {
+        .budget-table {
             margin-top: 20px;
         }
 
-        .progress-item {
-            margin-bottom: 20px;
-        }
-
-        .progress-label {
+        .budget-row {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 8px;
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .budget-row:last-child {
+            border-bottom: none;
+        }
+
+        .budget-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: bold;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .budget-total {
+            background: #f8f9fa;
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #667eea;
+            border-radius: 0 0 8px 8px;
+            border-top: 3px solid #667eea;
+        }
+
+        .budget-category {
+            flex: 1;
+        }
+
+        .budget-amount {
             font-weight: bold;
             color: #333;
         }
 
-        .progress-bar {
-            background: #e0e0e0;
-            border-radius: 10px;
-            height: 25px;
-            overflow: hidden;
+        .budget-header .budget-amount {
+            color: white;
         }
 
-        .progress-fill {
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-            height: 100%;
-            border-radius: 10px;
-            transition: width 0.5s ease;
+        .checklist {
+            margin-top: 20px;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: #f8f9fa;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border-left: 5px solid #e0e0e0;
+            transition: all 0.3s;
+        }
+
+        .checklist-item.completed {
+            border-left-color: #27ae60;
+            background: #e8f5e9;
+        }
+
+        .checkbox {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 0.9em;
             font-weight: bold;
+            font-size: 1.2em;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .checklist-item.completed .checkbox {
+            background: #27ae60;
+            color: white;
+        }
+
+        .checklist-item:not(.completed) .checkbox {
+            background: #e0e0e0;
+            color: #999;
+        }
+
+        .checklist-text {
+            font-size: 1.1em;
+            color: #333;
+        }
+
+        .checklist-item.completed .checklist-text {
+            color: #27ae60;
+            font-weight: 500;
         }
 
         .location-list {
@@ -423,10 +484,10 @@
                 </div>
                 <div class="info-item">
                     <div class="info-label">⏱️ Duration</div>
-                    <div class="info-value">TBC:approx 1 week</div>
+                    <div class="info-value">TBC: approx 1 week</div>
                 </div>
                 <div class="info-item">
-                    <div class="info-label">💰 Budget per Person</div>
+                    <div class="info-label">💰 Total Budget per Person</div>
                     <div class="info-value">TBC</div>
                 </div>
                 <div class="info-item">
@@ -437,52 +498,77 @@
         </div>
 
         <div class="section">
-            <h2>📊 Planning Progress</h2>
-            <div class="progress-container">
-                <div class="progress-item">
-                    <div class="progress-label">
-                        <span>Destination Voting</span>
-                        <span>0%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 0%;">0%</div>
-                    </div>
+            <h2>💰 Budget Breakdown (Per Person)</h2>
+            <div class="budget-table">
+                <div class="budget-row budget-header">
+                    <div class="budget-category">Category</div>
+                    <div class="budget-amount">Estimated Cost</div>
                 </div>
-                <div class="progress-item">
-                    <div class="progress-label">
-                        <span>Accommodation Booked</span>
-                        <span>0%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 0%;">0%</div>
-                    </div>
+                <div class="budget-row">
+                    <div class="budget-category">✈️ Travel</div>
+                    <div class="budget-amount">TBC</div>
                 </div>
-                <div class="progress-item">
-                    <div class="progress-label">
-                        <span>Flights Booked</span>
-                        <span>0%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 0%;">0%</div>
-                    </div>
+                <div class="budget-row">
+                    <div class="budget-category">🏠 Accommodation</div>
+                    <div class="budget-amount">TBC</div>
                 </div>
-                <div class="progress-item">
-                    <div class="progress-label">
-                        <span>Lift Passes Purchased</span>
-                        <span>0%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 0%;">0%</div>
-                    </div>
+                <div class="budget-row">
+                    <div class="budget-category">🎿 Ski Pass</div>
+                    <div class="budget-amount">TBC</div>
                 </div>
-                <div class="progress-item">
-                    <div class="progress-label">
-                        <span>Equipment Rentals</span>
-                        <span>0%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 0%;">0%</div>
-                    </div>
+                <div class="budget-row">
+                    <div class="budget-category">⛷️ Ski Hire</div>
+                    <div class="budget-amount">TBC</div>
+                </div>
+                <div class="budget-row">
+                    <div class="budget-category">📚 Lessons</div>
+                    <div class="budget-amount">TBC</div>
+                </div>
+                <div class="budget-row">
+                    <div class="budget-category">🍺 Beer Money</div>
+                    <div class="budget-amount">TBC</div>
+                </div>
+                <div class="budget-row budget-total">
+                    <div class="budget-category">TOTAL</div>
+                    <div class="budget-amount">TBC</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>✅ Planning Checklist</h2>
+            <div class="checklist">
+                <div class="checklist-item">
+                    <div class="checkbox">✗</div>
+                    <div class="checklist-text">Destination Selected</div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox">✗</div>
+                    <div class="checklist-text">Accommodation Booked</div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox">✗</div>
+                    <div class="checklist-text">Flights Booked</div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox">✗</div>
+                    <div class="checklist-text">Lift Passes Purchased</div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox">✗</div>
+                    <div class="checklist-text">Equipment Rentals Reserved</div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox">✗</div>
+                    <div class="checklist-text">Travel Insurance Sorted</div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox">✗</div>
+                    <div class="checklist-text">Group Chat Created</div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox">✗</div>
+                    <div class="checklist-text">Itinerary Planned</div>
                 </div>
             </div>
         </div>
