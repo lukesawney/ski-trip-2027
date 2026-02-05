@@ -469,3 +469,29 @@ footer {
         text-align: center;
     }
 }
+
+.countdown-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    margin-bottom: 25px;
+}
+
+.countdown-item {
+    text-align: center;
+}
+
+.countdown-number {
+    display: block;
+    font-size: 3em;
+    font-weight: bold;
+    color: #667eea;
+}
+
+.countdown-label {
+    font-size: 1em;
+    color: #666;
+}
