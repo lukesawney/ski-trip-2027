@@ -1,6 +1,6 @@
 // Add to a new file: countdown.js
 function updateCountdown() {
-    const tripDate = new Date('2027-01-01T00:00:00'); // Set your trip date
+    const tripDate = new Date('2027-01-09T00:00:00'); // Set your trip date
     const now = new Date();
     const diff = tripDate - now;
     
