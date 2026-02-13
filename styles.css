@@ -395,104 +395,61 @@ h3 {
     font-weight: 500;
 }
 
-/* Money Checklist Table */
-.money-table {
+/* Budget Table */
+.budget-table {
     margin-top: 20px;
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    background: white;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto; /* center the table */
 }
 
-.money-row {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1.5fr 1.5fr; /* spread columns */
-    gap: 24px;                                   /* space between columns */
+.budget-row {
+    display: flex;
+    justify-content: space-between;
     padding: 18px 25px;
-    align-items: center;
     border-bottom: 1px solid #e2e8f0;
+    transition: background 0.2s ease;
 }
 
-.money-row:last-child {
+.budget-row:hover:not(.budget-header):not(.budget-total) {
+    background: #f8fafc;
+}
+
+.budget-row:last-child {
     border-bottom: none;
 }
 
-.money-header {
+.budget-header {
     background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
     color: white;
     font-weight: 700;
     font-family: 'Poppins', sans-serif;
+    border-radius: 16px 16px 0 0;
     font-size: 1.05em;
 }
 
-.money-header .money-col {
-    color: white;
+.budget-total {
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+    font-weight: 700;
+    font-size: 1.3em;
+    color: #1e40af;
+    border-radius: 0 0 16px 16px;
+    border-top: 3px solid #3b82f6;
+    font-family: 'Poppins', sans-serif;
 }
 
-.money-col {
-    font-size: 0.98em;
-    color: #334155;
+.budget-category {
+    flex: 1;
+    font-weight: 500;
 }
 
-.money-action {
-    font-weight: 600;
-}
-
-.money-amount {
+.budget-amount {
     font-weight: 700;
     color: #1e40af;
 }
 
-.money-status {
-    font-weight: 600;
-}
-
-.money-status-paid {
-    color: #16a34a; /* green */
-}
-
-.money-status-unpaid {
-    color: #ea580c; /* orange */
-}
-
-.money-due {
-    font-weight: 500;
-    color: #475569;
-}
-
-/* Hover effect similar to budget rows */
-.money-row:hover:not(.money-header) {
-    background: #f8fafc;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .money-row {
-        grid-template-columns: 1.5fr 1fr; 
-        grid-template-rows: auto auto;
-        gap: 12px 16px;
-    }
-
-    .money-action {
-        grid-column: 1 / 2;
-    }
-
-    .money-amount {
-        grid-column: 2 / 3;
-        text-align: right;
-    }
-
-    .money-status {
-        grid-column: 1 / 2;
-    }
-
-    .money-due {
-        grid-column: 2 / 3;
-        text-align: right;
-    }
+.budget-header .budget-amount {
+    color: white;
 }
 
 /* Checklist */
@@ -933,4 +890,49 @@ header::before,
 .section:hover::before,
 header:hover::before {
     opacity: 1;
+}
+
+/* Money checklist extra columns */
+.money-status-col,
+.money-due-col {
+    flex: 0 0 160px;          /* give them fixed-ish width */
+    text-align: right;
+    font-weight: 500;
+    color: #475569;
+}
+
+/* Status colours */
+.money-status-paid {
+    color: #16a34a;           /* green */
+    font-weight: 600;
+}
+
+.money-status-unpaid {
+    color: #ea580c;           /* orange */
+    font-weight: 600;
+}
+
+/* Make the row layout handle 4 columns nicely */
+.budget-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.budget-category {
+    flex: 1;                  /* main description stretches */
+}
+
+/* Responsive tweak */
+@media (max-width: 768px) {
+    .budget-row {
+        flex-wrap: wrap;
+    }
+
+    .money-status-col,
+    .money-due-col {
+        flex: 0 0 50%;
+        text-align: left;
+        margin-top: 6px;
+    }
 }
