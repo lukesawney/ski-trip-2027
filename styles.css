@@ -395,61 +395,104 @@ h3 {
     font-weight: 500;
 }
 
-/* Budget Table */
-.budget-table {
+/* Money Checklist Table */
+.money-table {
     margin-top: 20px;
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    background: white;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto; /* center the table */
 }
 
-.budget-row {
-    display: flex;
-    justify-content: space-between;
+.money-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.5fr 1.5fr; /* spread columns */
+    gap: 24px;                                   /* space between columns */
     padding: 18px 25px;
+    align-items: center;
     border-bottom: 1px solid #e2e8f0;
-    transition: background 0.2s ease;
 }
 
-.budget-row:hover:not(.budget-header):not(.budget-total) {
-    background: #f8fafc;
-}
-
-.budget-row:last-child {
+.money-row:last-child {
     border-bottom: none;
 }
 
-.budget-header {
+.money-header {
     background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
     color: white;
     font-weight: 700;
     font-family: 'Poppins', sans-serif;
-    border-radius: 16px 16px 0 0;
     font-size: 1.05em;
 }
 
-.budget-total {
-    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
-    font-weight: 700;
-    font-size: 1.3em;
-    color: #1e40af;
-    border-radius: 0 0 16px 16px;
-    border-top: 3px solid #3b82f6;
-    font-family: 'Poppins', sans-serif;
-}
-
-.budget-category {
-    flex: 1;
-    font-weight: 500;
-}
-
-.budget-amount {
-    font-weight: 700;
-    color: #1e40af;
-}
-
-.budget-header .budget-amount {
+.money-header .money-col {
     color: white;
+}
+
+.money-col {
+    font-size: 0.98em;
+    color: #334155;
+}
+
+.money-action {
+    font-weight: 600;
+}
+
+.money-amount {
+    font-weight: 700;
+    color: #1e40af;
+}
+
+.money-status {
+    font-weight: 600;
+}
+
+.money-status-paid {
+    color: #16a34a; /* green */
+}
+
+.money-status-unpaid {
+    color: #ea580c; /* orange */
+}
+
+.money-due {
+    font-weight: 500;
+    color: #475569;
+}
+
+/* Hover effect similar to budget rows */
+.money-row:hover:not(.money-header) {
+    background: #f8fafc;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .money-row {
+        grid-template-columns: 1.5fr 1fr; 
+        grid-template-rows: auto auto;
+        gap: 12px 16px;
+    }
+
+    .money-action {
+        grid-column: 1 / 2;
+    }
+
+    .money-amount {
+        grid-column: 2 / 3;
+        text-align: right;
+    }
+
+    .money-status {
+        grid-column: 1 / 2;
+    }
+
+    .money-due {
+        grid-column: 2 / 3;
+        text-align: right;
+    }
 }
 
 /* Checklist */
